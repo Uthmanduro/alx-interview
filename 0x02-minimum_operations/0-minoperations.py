@@ -4,10 +4,8 @@
 
 def minOperations(n):
     """returns an integer"""
-    if n <= 0:
+    if n <= 0 or n == 1:
         return 0
-    if n == 1:
-        return 1
     arr = ["h"]
     exp_result = "h" * n
     cp = arr[0]
@@ -27,3 +25,7 @@ def minOperations(n):
             count += 1
             if arr[-1] == exp_result:
                 return count
+            elif len(arr[-1]) > len(exp_result):
+                return 0 
+        elif len(arr[-1]) > len(exp_result):
+            return 0 
