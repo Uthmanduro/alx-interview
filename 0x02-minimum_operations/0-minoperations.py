@@ -11,13 +11,10 @@ def minOperations(n):
     cp = arr[0]
     paste = cp
     count = 1
-    while True:
+    while len(arr[-1]) < len(exp_result):
         paste += cp
         arr.append(paste)
         count += 1
-
-        if len(arr[-1]) > len(exp_result):
-            return 0
 
         if arr[-1] == exp_result:
             return count
@@ -29,8 +26,6 @@ def minOperations(n):
             arr.append(paste)
             count += 1
 
-            if len(arr[-1]) > len(exp_result):
-                return 0
-
             if arr[-1] == exp_result:
                 return count
+    return 0
