@@ -11,7 +11,7 @@ def minOperations(n):
     cp = arr[0]
     paste = cp
     count = 1
-    while len(arr[-1]) < len(exp_result):
+    while len(arr[-1]) <= n:
         paste += cp
         arr.append(paste)
         count += 1
