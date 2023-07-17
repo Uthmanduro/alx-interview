@@ -15,17 +15,22 @@ def minOperations(n):
         paste += cp
         arr.append(paste)
         count += 1
+
+        if len(arr[-1]) > len(exp_result):
+            return 0
+
         if arr[-1] == exp_result:
             return count
+
         if len(exp_result) % len(arr[-1]) == 0:
             cp = arr[-1]
             count += 1
             paste += cp
             arr.append(paste)
             count += 1
+
+            if len(arr[-1]) > len(exp_result):
+                return 0
+
             if arr[-1] == exp_result:
                 return count
-            elif len(arr[-1]) > len(exp_result):
-                return 0 
-        elif len(arr[-1]) > len(exp_result):
-            return 0 
