@@ -11,13 +11,12 @@ try:
     for line in sys.stdin:
         count += 1
         args = line.split()
-        ip_list = args[0].split('.')
-        if not str(args[-2]).isdigit() or not str(args[-1]).isdigit() or\
-                not all(num.isdigit() for num in ip_list):
-            continue
-        file_size += int(args[-1])
-        if args[-2] in codes:
-            codes[args[-2]] += 1
+        try:
+            file_size += int(args[-1])
+            if args[-2] in codes:
+                codes[args[-2]] += 1
+        except (ValueError, IndexError):
+            pass
         if count % 10 == 0:
             print("File size: {}".format(file_size))
             for key, value in codes.items():
