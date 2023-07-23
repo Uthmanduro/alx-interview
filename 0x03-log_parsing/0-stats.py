@@ -11,6 +11,8 @@ try:
     for line in sys.stdin:
         count += 1
         args = line.split()
+        if not str(args[-2]).isdigit() or not str(args[-1]).isdigit():
+            continue
         file_size += int(args[-1])
         if args[-2] in codes:
             codes[args[-2]] += 1
