@@ -11,7 +11,9 @@ try:
     for line in sys.stdin:
         count += 1
         args = line.split()
-        if not str(args[-2]).isdigit() or not str(args[-1]).isdigit():
+        ip_list = args[0].split('.')
+        if not str(args[-2]).isdigit() or not str(args[-1]).isdigit() or\
+                not all(num.isdigit() for num in ip_list):
             continue
         file_size += int(args[-1])
         if args[-2] in codes:
