@@ -28,4 +28,4 @@ def validUTF8(data):
             continue
         else:
             return False
-    return len(bytes(item)) < 128
+    return True
