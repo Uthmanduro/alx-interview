@@ -43,5 +43,5 @@ def validUTF8(data):
                     and foth_byte.startswith("10"):
                 continue
             else:
-                return False    
+                return False
     return True
