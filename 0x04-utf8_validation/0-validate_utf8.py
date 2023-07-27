@@ -10,16 +10,15 @@ def validUTF8(data):
             assert type(num) == int
     except Exception:
         return False
-    for item in data:  # check if item is an int
-        binary = item & 0xFF
-        binary = bin(binary)[2:].zfill(8)  # convert to binary
+    for item in data:
+        binary = format(item, '08b')  # convert to binary
         if binary.startswith("0"):  # check if item is 1 byte
             continue
-        elif binary.startswith("110") and binary[4:8].startswith("10"):
+        elif binary.startswith("110"):
             continue
-        elif binary.startswith("1110") and binary[4:8].startswith("10"):
+        elif binary.startswith("1110"):
             continue
-        elif binary.startswith("11110") and binary[4:8].startswith("10"):
+        elif binary.startswith("11110"):
             continue
         else:
             return False
