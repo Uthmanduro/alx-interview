@@ -4,12 +4,13 @@
 
 def validUTF8(data):
     """Return: True if data is a valid UTF-8 encoding, else return False"""
-    if not isinstance(data, list):   # check if data is a list
+    try:
+        assert type(data) == list
+        for num in data:
+            assert type(num) == int
+    except Exception:
         return False
     for item in data:  # check if item is an int
-        if not isinstance(item, int):
-            return False
-
         binary = bin(item)[2:]
         if len(binary) > 0 and len(binary) <= 8:  # check if item is 1 byte
             binary = binary.zfill(8)  # fill with 0s to make 8 bits
