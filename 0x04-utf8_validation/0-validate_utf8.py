@@ -11,22 +11,39 @@ def validUTF8(data):
             return False
 
         binary = bin(item)[2:]
-        second_byte = binary[8:16]
-        third_byte = binary[16:24]
-        fourth_byte = binary[24:32]
-
-        if len(binary) <= 8 or binary[:1] == "0":
-            continue
-        elif len(binary) > 8 and len(binary) <= 16 and binary[:3] == "110"\
-                and second_byte[:2] == "10":
-            continue
-        elif len(binary) > 16 and len(binary) <= 24 and binary[:4] == "1110"\
-                and second_byte[:2] == "10" and third_byte[:2] == "10":
-            continue
-        elif len(binary) > 24 and len(binary) <= 32 and binary[:5] == "11110"\
-                and second_byte[:2] == "10" and third_byte[:2] == "10"\
-                and fourth_byte[:2] == "10":
-            continue
+        if len(binary) > 0 and len(binary) <= 8:
+            binary = binary.zfill(8)
+            if binary.startswith("0"):
+                continue
+            else:
+                return False
+        elif len(binary) > 8 and len(binary) <= 16:
+            binary = binary.zfill(16)
+            sec_byte = binary[8:16]
+            if binary.startswith("110") and sec_byte.startswith("10"):
+                continue
+            else:
+                return False
+        elif len(binary) > 16 and len(binary) <= 24:
+            binary = binary.zfill(24)
+            sec_byte = binary[8:16]
+            thd_byte = binary[16:24]
+            if binary.startswith("1110") and sec_byte.startswith("10") and\
+                    thd_byte.startswith("10"):
+                continue
+            else:
+                return False
+        elif len(binary) > 24 and len(binary) <= 32:
+            binary = binary.zfill(32)
+            sec_byte = binary[8:16]
+            thd_byte = binary[16:24]
+            foth_byte = binary[24:32]
+            if binary.startswith("11110") and sec_byte.startswith("10")\
+                    and thd_byte.startswith("10")\
+                    and foth_byte.startswith("10"):
+                continue
+            else:
+                return False
         else:
             return False
     return True
