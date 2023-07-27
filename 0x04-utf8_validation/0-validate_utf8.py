@@ -4,18 +4,22 @@
 
 def validUTF8(data):
     """Return: True if data is a valid UTF-8 encoding, else return False"""
+    if not isinstance(data, list):
+        return False
     for item in data:
         binary = bin(item)[2:]
         second_byte = binary[8:16]
         if len(binary) <= 8 or binary[:1] == "0":
             continue
-        elif len(binary) > 8 and len(binary) <= 16 and binary[:3] == "110" and second_byte[:2] == "10":
+        elif len(binary) > 8 and len(binary) <= 16 and binary[:3] == "110"\
+                and second_byte[:2] == "10":
             continue
-        elif len(binary) > 16 and len(binary) <= 24 and binary[:4] == "1110" and second_byte[:2] == "10":
+        elif len(binary) > 16 and len(binary) <= 24 and binary[:4] == "1110"\
+                and second_byte[:2] == "10":
             continue
-        elif len(binary) > 24 and len(binary) <= 32 and binary[:5] == "11110" and second_byte[:2] == "10":
+        elif len(binary) > 24 and len(binary) <= 32 and binary[:5] == "11110"\
+                and second_byte[:2] == "10":
             continue
         else:
             return False
-    return True
-    
+    return len(bytes(item)) < 128
