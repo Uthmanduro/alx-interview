@@ -1,0 +1,1 @@
+learning to solve nqueens algorithm question
