@@ -53,7 +53,7 @@ try:
         sys.exit(1)
     result = nqueens(int(sys.argv[1]))
     for i in result:
-         print(i)
+        print(i)
 except ValueError:
     print("N must be a number")
     sys.exit(1)
