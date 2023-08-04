@@ -47,14 +47,13 @@ def nqueens(n):
     return response
 
 
-if __name__ == "__main__":
-    try:
-        if len(sys.argv) != 2:
-            print("Usage: nqueens N")
-            sys.exit(1)
-        result = nqueens(int(sys.argv[1]))
-        for i in result:
-            print(i)
-    except ValueError:
-        print("N must be a number")
+try:
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
         sys.exit(1)
+    result = nqueens(int(sys.argv[1]))
+    for i in result:
+         print(i)
+except ValueError:
+    print("N must be a number")
+    sys.exit(1)
