@@ -2,7 +2,7 @@
 """Change comes from within"""
 
 
-def make_change(coins, total):
+def makeChange(coins, total):
     """returns fewest number of coins needed \
         to meet a given amount total"""
     if total <= 0:
